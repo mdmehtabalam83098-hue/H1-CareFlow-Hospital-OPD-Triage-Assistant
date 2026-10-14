@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H1 CareFlow | OPD Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>✚ CareFlow</h2>
+    <p class="brand-sub">H1 · FRONT DESK</p>
+
+    <p class="side-label">WORKSPACE</p>
+    <button class="nav active" data-view="dashboard">▦ Dashboard</button>
+    <button class="nav" data-view="queue">☷ OPD Queue</button>
+    <button class="nav" data-view="history">◷ Activity History</button>
+
+    <div class="sidebar-note">
+      <strong>● SIMULATED WORKSPACE</strong>
+      <p>Fictional records only. Data stays in this browser.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <span>Workspace / <strong id="pageName">Dashboard</strong></span>
+      <span class="simulated">● SIMULATED DATA</span>
+    </header>
+
+    <section id="dashboardView">
+      <div class="welcome">
+        <div>
+          <p class="eyebrow">FRONT DESK WORKSPACE</p>
+          <h1>Good day, front desk</h1>
+          <p>A clear view of fictional registrations and staff-controlled review.</p>
+        </div>
+        <button id="showForm" class="primary">＋ Register a visit</button>
+      </div>
+
+      <div class="notice">
+        <strong>ⓘ Student demo — SIMULATED / fictional data only.</strong>
+        Never enter real patient information. Reported flags are for qualified staff
+        assessment only; they are not medical advice or automated assessment.
+      </div>
+
+      <div class="stats">
+        <article class="stat">
+          <p>Registered patients</p><h2 id="total">0</h2>
+          <small>Fictional demo records</small>
+        </article>
+        <article class="stat">
+          <p>In waiting queue</p><h2 id="waiting">0</h2>
+          <small>Staff-controlled sequence</small>
+        </article>
+        <article class="stat">
+          <p>Awaiting staff review</p><h2 id="pending">0</h2>
+          <small>Manual review status</small>
+        </article>
+        <article class="stat">
+          <p>Reported flags</p><h2 id="flags">0</h2>
+          <small>Self-reported demo entries</small>
+        </article>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="panel">
+          <h3>Registrations by department</h3>
+          <p class="muted">Counts of fictional records</p>
+          <div id="departmentChart"></div>
+        </article>
+        <article class="panel">
+          <h3>Recent activity</h3>
+          <p class="muted">Latest staff-controlled updates</p>
+          <div id="recentActivity"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="formPanel" class="panel hidden">
+      <h2>Register a fictional visit</h2>
+      <form id="patientForm">
+        <label for="patientName">Demo patient name</label>
+        <input id="patientName" placeholder="Demo Patient 01" maxlength="70" required>
+
+        <label for="department">Department</label>
+        <select id="department" required>
+          <option>General OPD</option>
+          <option>Paediatrics</option>
+          <option>Orthopaedics</option>
+          <option>Dermatology</option>
+          <option>ENT</option>
+          <option>General Surgery</option>
+        </select>
+
+        <label for="concern">Reported concern</label>
+        <textarea id="concern" maxlength="500" placeholder="Fever and headache for two days" required></textarea>
+
+        <label for="warning">Reported warning sign</label>
+        <select id="warning">
+          <option value="No">No warning sign reported</option>
+          <option value="Yes">Yes — qualified staff review needed</option>
+        </select>
+
+        <div class="form-actions">
+          <button class="primary" type="submit">Save demo registration</button>
+          <button class="secondary" id="cancelForm" type="button">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="queueView" class="panel hidden">
+      <div class="section-heading">
+        <div><h2>OPD Queue</h2><p class="muted">All entries are simulated.</p></div>
+        <button id="exportCSV" class="secondary">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Patient</th><th>Department</th><th>Reported concern</th>
+            <th>Flag</th><th>Review status</th>
+          </tr></thead>
+          <tbody id="patientRows"></tbody>
+        </table>
+      </div>
+      <p id="emptyQueue" class="muted">No fictional registrations yet.</p>
+    </section>
+
+    <section id="historyView" class="panel hidden">
+      <h2>Activity History</h2>
+      <p class="muted">Actions recorded in this browser session.</p>
+      <div id="historyList"></div>
+    </section>
+
+    <footer>H1 CareFlow · Student project prototype · Not for real patient care</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
